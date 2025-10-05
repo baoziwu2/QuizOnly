@@ -18,6 +18,7 @@ import { selectAdmin, selectAuthenticated, selectInit } from "@/store/auth.ts";
 const Generation = lazyFactor(() => import("@/routes/Generation.tsx"));
 const Sharing = lazyFactor(() => import("@/routes/Sharing.tsx"));
 const Article = lazyFactor(() => import("@/routes/Article.tsx"));
+const Quiz = lazyFactor(() => import("@/routes/quiz/index.tsx"));
 
 const Admin = lazyFactor(() => import("@/routes/Admin.tsx"));
 const Dashboard = lazyFactor(() => import("@/routes/admin/DashBoard.tsx"));
@@ -101,6 +102,18 @@ const router = createBrowserRouter(
         <AuthRequired>
           <Suspense>
             <Article />
+          </Suspense>
+        </AuthRequired>
+      ),
+      ErrorBoundary: NotFound,
+    },
+    {
+      id: "quiz",
+      path: "/quiz",
+      element: (
+        <AuthRequired>
+          <Suspense>
+            <Quiz />
           </Suspense>
         </AuthRequired>
       ),

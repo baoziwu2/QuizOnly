@@ -11,11 +11,13 @@ import (
 	"chat/manager"
 	"chat/manager/conversation"
 	"chat/middleware"
+	"chat/quiz"
 	"chat/utils"
 	"fmt"
+	"net/url"
+
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
-	"net/url"
 )
 
 func readCorsOrigins() {
@@ -49,6 +51,7 @@ func registerApiRouter(engine *gin.Engine) {
 		manager.Register(app)
 		addition.Register(app)
 		conversation.Register(app)
+		quiz.Register(app)
 	}
 }
 
